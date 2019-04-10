@@ -27,18 +27,18 @@ while getopts "?hvt:H:P:S:C:" opt; do
 		usage
 		exit 0
 		;;
-	v) export VERBOSE=1 ;;
-	t) export TYPE="$OPTARG";;
+	v) VERBOSE=1 ;;
+	t) TYPE="$OPTARG";;
 	H)
-		export HOST="$OPTARG"
-		export TYPE="host"
+		HOST="$OPTARG"
+		TYPE="host"
 		;;
-	P) export PORT="$OPTARG";;
+	P) PORT="$OPTARG";;
 	S)
-		export SECRET="$OPTARG"
-		export TYPE="secret"
+		SECRET="$OPTARG"
+		TYPE="secret"
 		;;
-	C) export CACERT="$OPTARG";;
+	C) CACERT="$OPTARG";;
 	esac
 done
 
@@ -53,12 +53,12 @@ OPERATION="$1"
 [ 'xhost' == "x$TYPE" ] &&
 	[ -z "$HOST" ] &&
 	[ -n "$OPERATION" ] &&
-	export HOST="$OPERATION"
+	HOST="$OPERATION"
 
 [ 'xsecret' == "x$TYPE" ] &&
 	[ -z "$SECRET" ] &&
 	[ -n "$OPERATION" ] &&
-	export SECRET="$OPERATION"
+	SECRET="$OPERATION"
 
 PORT=${PORT:-443}
 HOST="${HOST:-localhost}"
