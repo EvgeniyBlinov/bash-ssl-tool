@@ -73,7 +73,7 @@ VERBOSE=${VERBOSE:-0}
 
 case "$TYPE" in
 	host)
-		CMD="timeout 3 openssl s_client -connect ${HOST}:${PORT} 2>/dev/null |
+		CMD="timeout 3 openssl s_client -servername ${HOST} -connect ${HOST}:${PORT} 2>/dev/null |
 			openssl x509 -text"
 		;;
 	secret)
